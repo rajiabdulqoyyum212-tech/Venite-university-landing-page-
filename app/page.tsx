@@ -5,6 +5,7 @@ import { AnimatedCounter } from '@/components/animated-counter';
 import { ProgramFinder } from '@/components/program-finder';
 import { TestimonialCarousel } from '@/components/testimonial-carousel';
 import { EventCountdown } from '@/components/event-countdown';
+import { VirtualTour } from '@/components/virtual-tour';
 import { motion } from 'motion/react';
 import { ArrowRight, BookOpen, Globe, Users, Trophy, CalendarDays, MapPin } from 'lucide-react';
 import Link from 'next/link';
@@ -200,6 +201,19 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Virtual Tour Section */}
+      <section className="py-24 px-6 bg-bg border-t border-border-color">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl font-display font-bold text-text-heading mb-4">Explore the Campus</h2>
+              <p className="text-text-muted text-lg">Take an interactive virtual tour of Venite University before you arrive.</p>
+            </div>
+          </div>
+          <VirtualTour />
         </div>
       </section>
 
