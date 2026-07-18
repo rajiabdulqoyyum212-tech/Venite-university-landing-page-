@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: var(--bg);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-card-bg: var(--card-bg);
+  --color-text-heading: var(--text-heading);
+  --color-text-body: var(--text-body);
+  --color-text-muted: var(--text-muted);
+  --color-text-link: var(--text-link);
+  --color-text-on-accent: var(--text-on-accent);
+  --color-border-color: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-secondary: var(--accent-secondary);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space);
+}
+
+@layer base {
+  :root {
+    --bg: #FFFFFF;
+    --bg-secondary: #F8FAF9;
+    --card-bg: #F2F7F4;
+    --text-heading: #0A0E27;
+    --text-body: #2A2E35;
+    --text-muted: #5C6470;
+    --text-link: #039E33;
+    --text-on-accent: #0A0E27;
+    --border: #E0E4E2;
+    --accent: #04D43F;
+    --accent-secondary: #F4B400;
+  }
+
+  .dark {
+    --bg: #0A0E27;
+    --bg-secondary: #0D1B12;
+    --card-bg: #111A2E;
+    --text-heading: #F5FFF7;
+    --text-body: #D6DED9;
+    --text-muted: #8A968E;
+    --text-link: #3DFF6E;
+    --text-on-accent: #0A0E27;
+    --border: #1F2937;
+    --accent: #04D43F;
+    --accent-secondary: #F4B400;
+  }
+}
+
+@layer base {
+  body {
+    background-color: var(--bg);
+    color: var(--text-body);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-heading);
+    font-family: var(--font-display);
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--accent), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

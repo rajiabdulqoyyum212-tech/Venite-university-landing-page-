@@ -1,0 +1,6 @@
+{
+  "name": "Venite University",
+  "description": "Venite University Official Website",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
