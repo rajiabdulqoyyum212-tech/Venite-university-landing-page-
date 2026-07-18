@@ -4,8 +4,9 @@ import { PageTransition } from '@/components/page-transition';
 import { AnimatedCounter } from '@/components/animated-counter';
 import { ProgramFinder } from '@/components/program-finder';
 import { TestimonialCarousel } from '@/components/testimonial-carousel';
+import { EventCountdown } from '@/components/event-countdown';
 import { motion } from 'motion/react';
-import { ArrowRight, BookOpen, Globe, Users, Trophy } from 'lucide-react';
+import { ArrowRight, BookOpen, Globe, Users, Trophy, CalendarDays, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -261,6 +262,64 @@ export default function Home() {
                 />
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Events */}
+      <section className="py-24 px-6 bg-bg-secondary border-t border-border-color">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+            <div className="flex-1 w-full">
+              <div className="mb-12">
+                <h2 className="text-4xl font-display font-bold text-text-heading mb-4">Upcoming Events</h2>
+                <p className="text-text-muted text-lg">
+                  Stay engaged with the Venite community. Join us for these exciting upcoming programmes.
+                </p>
+              </div>
+              
+              <div className="space-y-6">
+                {[
+                  { title: "Fall Career Fair", date: "Oct 12, 2026", time: "10:00 AM - 4:00 PM", location: "Main Campus Arena" },
+                  { title: "Tech Innovation Summit", date: "Oct 15, 2026", time: "2:00 PM - 6:00 PM", location: "Turing Tech Center" },
+                  { title: "Alumni Networking Mixer", date: "Oct 18, 2026", time: "6:30 PM - 9:00 PM", location: "The Grand Hall" }
+                ].map((event, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    className="flex flex-col sm:flex-row gap-6 p-6 bg-bg border border-border-color rounded-2xl hover:border-accent/50 hover:shadow-md transition-all group"
+                  >
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-text-heading mb-2 group-hover:text-accent transition-colors">{event.title}</h3>
+                      <div className="flex flex-wrap gap-4 text-sm text-text-muted">
+                        <span className="flex items-center gap-1"><CalendarDays size={16} className="text-accent" /> {event.date}</span>
+                        <span className="flex items-center gap-1"><MapPin size={16} className="text-accent" /> {event.location}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center sm:justify-end">
+                      <button className="px-5 py-2 text-sm font-semibold rounded-full bg-card-bg border border-border-color hover:bg-accent hover:text-text-on-accent transition-colors">
+                        RSVP
+                      </button>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              <div className="mt-8">
+                 <Link href="#" className="text-text-link font-semibold hover:text-accent transition-colors flex items-center gap-2">
+                   View full calendar <ArrowRight size={16} />
+                 </Link>
+              </div>
+            </div>
+            
+            <div className="w-full lg:w-[450px] shrink-0">
+               <EventCountdown 
+                  eventName="Annual Tech Innovation Summit" 
+                  targetDate="2026-10-15T14:00:00" 
+               />
+            </div>
           </div>
         </div>
       </section>
