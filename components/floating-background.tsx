@@ -31,7 +31,7 @@ export function FloatingBackground() {
         return (
           <motion.div
             key={el.id}
-            className="absolute text-accent/10 dark:text-accent/5"
+            className="absolute text-accent/30 dark:text-accent/20 drop-shadow-md"
             style={{ left: el.left, top: el.top }}
             animate={{
               y: [0, -100, 0],

@@ -6,6 +6,7 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { FloatingBackground } from '@/components/floating-background';
 import { Preloader } from '@/components/preloader';
+import { BackToTop } from '@/components/back-to-top';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -34,6 +35,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             {children}
           </main>
           <Footer />
+          <BackToTop />
         </ThemeProvider>
       </body>
     </html>
