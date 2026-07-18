@@ -10,6 +10,8 @@ import { ArrowRight, BookOpen, Globe, Users, Trophy, CalendarDays, MapPin } from
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { TypewriterTagline } from '@/components/typewriter-tagline';
+
 export default function Home() {
   return (
     <PageTransition>
@@ -72,8 +74,9 @@ export default function Home() {
             </h1>
             <motion.p 
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
-              className="text-lg md:text-xl text-text-muted mb-10 max-w-2xl mx-auto leading-relaxed">
-              Discover a world-class education where innovation meets tradition. 
+              className="text-lg md:text-xl text-text-muted mb-10 max-w-2xl mx-auto leading-relaxed h-[60px] md:h-auto">
+              Discover a world-class education <TypewriterTagline />
+              <br className="hidden md:block" />
               Join a vibrant community dedicated to pushing boundaries and solving global challenges.
             </motion.p>
             <motion.div 
