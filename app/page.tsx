@@ -7,30 +7,77 @@ import { TestimonialCarousel } from '@/components/testimonial-carousel';
 import { motion } from 'motion/react';
 import { ArrowRight, BookOpen, Globe, Users, Trophy } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   return (
     <PageTransition>
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center px-6 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://picsum.photos/seed/venite/1920/1080"
+            alt="Venite University Campus"
+            fill
+            className="object-cover object-center opacity-40 dark:opacity-20 mix-blend-luminosity"
+            referrerPolicy="no-referrer"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-bg/90 via-bg/70 to-bg" />
+        </div>
         <div className="max-w-5xl mx-auto text-center z-10 pt-20">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { 
+                opacity: 1,
+                transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+              }
+            }}
           >
-            <span className="inline-block py-1 px-3 rounded-full bg-accent/10 text-text-link font-semibold text-sm mb-6 border border-accent/20">
-              Admissions now open for Fall 2026
-            </span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-text-heading mb-6">
-              Shape Your Future at <br className="hidden md:block" />
-              <span className="text-gradient">Venite University</span>
+            <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+              <span className="inline-block py-1 px-3 rounded-full bg-accent/10 text-text-link font-semibold text-sm mb-6 border border-accent/20">
+                Admissions now open for Fall 2026
+              </span>
+            </motion.div>
+            
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-text-heading mb-6 overflow-hidden flex flex-col md:block items-center">
+              <span className="flex flex-wrap justify-center md:inline-flex md:flex-nowrap gap-x-3 md:gap-x-4 lg:gap-x-5">
+                {"Shape Your Future at".split(" ").map((word, i) => (
+                  <motion.span
+                    key={i}
+                    className="inline-block"
+                    variants={{
+                      hidden: { opacity: 0, y: 50, skewY: 10 },
+                      visible: { opacity: 1, y: 0, skewY: 0, transition: { duration: 0.6, ease: [0.215, 0.610, 0.355, 1.000] } }
+                    }}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+              </span>
+              <br className="hidden md:block" />
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0, y: 50, skewY: 10 },
+                  visible: { opacity: 1, y: 0, skewY: 0, transition: { duration: 0.6, ease: [0.215, 0.610, 0.355, 1.000] } }
+                }}
+                className="inline-block text-gradient mt-2 md:mt-4"
+              >
+                Venite University
+              </motion.span>
             </h1>
-            <p className="text-lg md:text-xl text-text-muted mb-10 max-w-2xl mx-auto leading-relaxed">
+            <motion.p 
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
+              className="text-lg md:text-xl text-text-muted mb-10 max-w-2xl mx-auto leading-relaxed">
               Discover a world-class education where innovation meets tradition. 
               Join a vibrant community dedicated to pushing boundaries and solving global challenges.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            </motion.p>
+            <motion.div 
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link 
                 href="/academics" 
                 className="w-full sm:w-auto px-8 py-4 bg-accent text-text-on-accent rounded-full font-semibold hover:bg-accent/90 transition-all hover:scale-105 shadow-xl shadow-accent/20 flex items-center justify-center gap-2"
@@ -44,7 +91,7 @@ export default function Home() {
               >
                 Discover Venite
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -146,6 +193,72 @@ export default function Home() {
                   <h3 className="text-xl font-display font-bold text-text-heading mb-3">{card.title}</h3>
                   <p className="text-text-muted leading-relaxed">{card.desc}</p>
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Campus Life Gallery */}
+      <section className="py-24 px-6 border-t border-border-color">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-display font-bold text-text-heading mb-4">Life at Venite</h2>
+            <p className="text-text-muted max-w-2xl mx-auto text-lg">
+              Explore our vibrant campus and community through the lens.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+            {[
+              {
+                src: "https://picsum.photos/seed/venite1/800/600",
+                alt: "Students studying in the Oasis Library with modern architecture",
+                className: "col-span-2 md:col-span-1 row-span-2"
+              },
+              {
+                src: "https://picsum.photos/seed/venite2/800/400",
+                alt: "Aerial view of the Green Quad during autumn",
+                className: "col-span-1 md:col-span-2"
+              },
+              {
+                src: "https://picsum.photos/seed/venite3/400/400",
+                alt: "Engineering students working on a robotics project",
+                className: "col-span-1"
+              },
+              {
+                src: "https://picsum.photos/seed/venite4/400/400",
+                alt: "A diverse group of students chatting outside the student center",
+                className: "col-span-1"
+              },
+              {
+                src: "https://picsum.photos/seed/venite5/800/800",
+                alt: "Graduation day celebration in front of the main building",
+                className: "col-span-2 md:col-span-2 row-span-2"
+              },
+              {
+                src: "https://picsum.photos/seed/venite6/400/800",
+                alt: "A professor giving a lecture in a state-of-the-art auditorium",
+                className: "col-span-2 md:col-span-1 row-span-2"
+              }
+            ].map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className={`relative rounded-3xl overflow-hidden group ${img.className} min-h-[200px] md:min-h-[300px] bg-card-bg border border-border-color`}
+              >
+                <div className="absolute inset-0 bg-accent/20 mix-blend-overlay z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  referrerPolicy="no-referrer"
+                />
               </motion.div>
             ))}
           </div>
