@@ -6,6 +6,7 @@ import { ProgramFinder } from '@/components/program-finder';
 import { TestimonialCarousel } from '@/components/testimonial-carousel';
 import { EventCountdown } from '@/components/event-countdown';
 import { VirtualTour } from '@/components/virtual-tour';
+import { CampusStories } from '@/components/campus-stories';
 import { motion } from 'motion/react';
 import { ArrowRight, BookOpen, Globe, Users, Trophy, CalendarDays, MapPin } from 'lucide-react';
 import Link from 'next/link';
@@ -338,6 +339,23 @@ export default function Home() {
                />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Campus Stories */}
+      <section className="py-24 px-6 border-t border-border-color">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl font-display font-bold text-text-heading mb-4">Campus Stories</h2>
+              <p className="text-text-muted text-lg">Hear directly from our students about their Venite experience.</p>
+            </div>
+            <Link href="#" className="text-text-link hover:text-accent font-semibold flex items-center gap-1 group">
+              Read all stories
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+          <CampusStories />
         </div>
       </section>
 

@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { FloatingBackground } from '@/components/floating-background';
+import { Preloader } from '@/components/preloader';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -25,6 +26,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${space.variable}`}>
       <body className="font-sans antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+        <Preloader />
         <ThemeProvider>
           <FloatingBackground />
           <Header />
