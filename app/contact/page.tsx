@@ -28,7 +28,7 @@ export default function Contact() {
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-display font-bold text-text-heading mb-6">Get in Touch</h1>
           <p className="text-lg text-text-muted">
-            Have questions about admissions, campus life, or programs? We're here to help. Reach out to us below.
+            Have questions about admissions, campus life, or programs? We&apos;re here to help. Reach out to us below.
           </p>
         </div>
 

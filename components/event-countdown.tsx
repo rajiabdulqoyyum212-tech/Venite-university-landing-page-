@@ -31,6 +31,7 @@ export function EventCountdown({ targetDate, eventName }: { targetDate: string; 
       return timeLeft;
     };
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTimeLeft(calculateTimeLeft());
 
     const timer = setInterval(() => {

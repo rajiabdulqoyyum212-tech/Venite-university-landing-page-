@@ -54,17 +54,17 @@ export default function About() {
             <div className="space-y-6">
               <div>
                 <h3 className="font-semibold text-lg text-text-heading">1. Planning & Requirements Gathering</h3>
-                <p className="text-sm mt-1">We defined the scope (4 pages: Home, About, Academics, Contact) and established a strict color palette centered around #04D43F for both Light and Dark modes. The core feature requirements included a floating "Dynamic Island" header, animated stat counters, and scroll reveals.</p>
+                <p className="text-sm mt-1">We defined the scope (4 pages: Home, About, Academics, Contact) and established a strict color palette centered around #04D43F for both Light and Dark modes. The core feature requirements included a floating &quot;Dynamic Island&quot; header, animated stat counters, and scroll reveals.</p>
               </div>
 
               <div>
                 <h3 className="font-semibold text-lg text-text-heading">2. Information Architecture</h3>
-                <p className="text-sm mt-1">Content was structured to flow logically. The Home page serves as a high-impact entry point with a programmatic quiz. About details the university's ethos. Academics showcases offerings, and Contact handles inquiries.</p>
+                <p className="text-sm mt-1">Content was structured to flow logically. The Home page serves as a high-impact entry point with a programmatic quiz. About details the university&apos;s ethos. Academics showcases offerings, and Contact handles inquiries.</p>
               </div>
 
               <div>
                 <h3 className="font-semibold text-lg text-text-heading">3. Visual Design Direction</h3>
-                <p className="text-sm mt-1">The design relies on "Space Grotesk" for display headings and "Inter" for legibility. A high-contrast theme system was implemented mapping strict CSS custom properties to ensureWCAG AA compliance and cohesive UI elements.</p>
+                <p className="text-sm mt-1">The design relies on &quot;Space Grotesk&quot; for display headings and &quot;Inter&quot; for legibility. A high-contrast theme system was implemented mapping strict CSS custom properties to ensureWCAG AA compliance and cohesive UI elements.</p>
               </div>
 
               <div>

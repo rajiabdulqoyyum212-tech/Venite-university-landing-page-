@@ -55,7 +55,7 @@ export function TestimonialCarousel() {
             className="z-10"
           >
             <p className="text-xl md:text-2xl font-medium text-text-body mb-8 leading-relaxed max-w-3xl mx-auto">
-              "{testimonials[current].quote}"
+              &quot;{testimonials[current].quote}&quot;
             </p>
             <div>
               <p className="font-display font-bold text-text-heading text-lg">

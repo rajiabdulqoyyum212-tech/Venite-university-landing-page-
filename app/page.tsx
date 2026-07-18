@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef } from 'react';
 import { PageTransition } from '@/components/page-transition';
 import { AnimatedCounter } from '@/components/animated-counter';
 import { ProgramFinder } from '@/components/program-finder';
@@ -7,7 +8,7 @@ import { TestimonialCarousel } from '@/components/testimonial-carousel';
 import { EventCountdown } from '@/components/event-countdown';
 import { VirtualTour } from '@/components/virtual-tour';
 import { CampusStories } from '@/components/campus-stories';
-import { motion } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowRight, BookOpen, Globe, Users, Trophy, CalendarDays, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -15,22 +16,32 @@ import Image from 'next/image';
 import { TypewriterTagline } from '@/components/typewriter-tagline';
 
 export default function Home() {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const opacityText = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
     <PageTransition>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center px-6 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      <section ref={heroRef} className="relative min-h-[90vh] flex items-center justify-center px-6 overflow-hidden">
+        <motion.div style={{ y: yBg }} className="absolute inset-0 z-0">
           <Image
             src="https://picsum.photos/seed/venite/1920/1080"
             alt="Venite University Campus"
             fill
-            className="object-cover object-center opacity-40 dark:opacity-20 mix-blend-luminosity"
+            className="object-cover object-center opacity-40 dark:opacity-20 mix-blend-luminosity scale-110"
             referrerPolicy="no-referrer"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-bg/90 via-bg/70 to-bg" />
-        </div>
-        <div className="max-w-5xl mx-auto text-center z-10 pt-20">
+        </motion.div>
+        <motion.div style={{ y: yText, opacity: opacityText }} className="max-w-5xl mx-auto text-center z-10 pt-20">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -66,12 +77,24 @@ export default function Home() {
               <br className="hidden md:block" />
               <motion.span
                 variants={{
-                  hidden: { opacity: 0, y: 50, skewY: 10 },
-                  visible: { opacity: 1, y: 0, skewY: 0, transition: { duration: 0.6, ease: [0.215, 0.610, 0.355, 1.000] } }
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.5 } }
                 }}
                 className="inline-block text-gradient mt-2 md:mt-4"
               >
-                Venite University
+                {"Venite University".split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, scale: 0.5, rotateX: 90 },
+                      visible: { opacity: 1, scale: 1, rotateX: 0, transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] } }
+                    }}
+                    className="inline-block origin-bottom"
+                    style={{ whiteSpace: "pre" }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
               </motion.span>
             </h1>
             <motion.p 
@@ -99,7 +122,7 @@ export default function Home() {
               </Link>
             </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Stats Section */}

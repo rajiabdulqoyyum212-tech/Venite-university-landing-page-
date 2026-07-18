@@ -20,6 +20,7 @@ export function FloatingBackground() {
       duration: Math.random() * 20 + 20,
       delay: Math.random() * 10,
     }));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setElements(newElements);
   }, []);
 
